@@ -4,14 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>html에 태그에 데이터 저장 하여 사용 / 디자이너가 수정 가능 </title>
+   
 </head>
 <body>
-    <p data-contents="html 태그에 데이터를 저장한 것임"
-       data-cls="text-dark bg-white border">여기 글자 수정해줘</p>
-    <script>
-       const ptag = document.querySelector("p");
-       ptag.innerHTML = ptag.dataset.contents;
-       ptag.classList = ptag.dataset.cls;
-    </script>
+    <div id="box" style="display:inline-block">
+        버튼을 클릭해보세요.
+   </div>
+   <div class="btns">
+      <button data-bg="red", data-color="white" data-text="빨강색">1</button>
+      <button data-bg="yellow", data-color="black" data-text="노랑색">2</button>
+      <button data-bg="blue", data-color="white" data-text="파랑색">3</button>
+      <button data-bg="black", data-color="white" data-text="검정색">4</button>
+      <button data-bg="purple", data-color="white" data-text="보라색">5</button>
+   </div>
+
+  <script>
+      const targetbox = document.getElementById("box"); // querySelector 보다 getElementById 을 사용하면 속도가 빠르다. / 메서드 직접 연결
+      const btns = document.querySelectorAll(".btns button"); // querySelectorAll을 사용하여 전체를 사용할 수 있게끔 한다. / 집합 forEach
+      btns.forEach(function(ele,idx){
+    //     console.log("태그", ele, "순번", idx)
+        ele.addEventListener('click', function(){
+            console.log(this);
+            targetbox.innerHTML = this.dataset.text;
+            targetbox.style.backgroundColor = this.dataset.bg;
+            targetbox.style.color = this.dataset.color;
+        })
+    })
+    
+  </script>
 </body>
 </html>
