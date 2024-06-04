@@ -1,4 +1,4 @@
-
+import hd_yys from "./navi.json";
 
 window.onload = function(){
     // onload는 화면이 로딩이 끝나면 실행되는 이벤트이다.
